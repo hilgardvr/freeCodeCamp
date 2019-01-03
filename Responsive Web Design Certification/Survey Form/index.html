@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            * {
+                text-align: center;
+                /*background-color: lightblue;*/
+            }
+            textarea {
+                vertical-align: top;
+            }
+            .form-container {
+                background-color: aliceblue;
+                min-width: 320px;
+                max-width: 640px;
+                margin: auto;
+            }
+            .row {
+                display: block;
+                margin: 20px 10px;
+            }
+            label {
+                display: inline-block;
+            }
+            textarea, input {
+                text-align: left;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <h1 id="title">Survey Form</h1>
+            <div class="form-container">
+                <p id="description">Generic survey form</p>
+                <form id="survey-form" method="POST" action="">
+                    <div class="row">
+                        <label id="name-label" for="name">*Name:</label>
+                        <input id="name" type="text" name="name" placeholder="Enter your name" required>
+                    </div>
+
+                    <div class="row">
+                        <label id="email-label" for="email">*Email:</label>
+                        <input id="email" type="email" name="email" placeholder="Enter your email" required>
+                    </div>
+
+                    <div class="row">
+                        <label id="number-label" for="age">Age:</label>
+                        <input id="number" type="number" name="age" min="18" max="40" placeholder="Age">
+                    </div>
+
+                    <div class="row">
+                        <label id="dropdown-label" for="dropdown">Dropdown Label:</label>
+                        <select id="dropdown">
+                            <option value="A">Option A</option>
+                            <option value="B">Option B</option>
+                        </select>
+                    </div>
+
+                    <div class="row">
+                        <label id=radio-label for="gender">Gender:</label>
+                        <input type="radio" name="gender" value="male">Male
+                        <input type="radio" name="gender" value="female">Female
+                        <input type="radio" name="gender" value="other">Other
+                    </div>
+
+                    <div class="row">
+                        <label id="checkbox-label" for="checkbox">Options:</label>
+                        <input type="checkbox" name="check" value="A">Option A
+                        <input type="checkbox" name="check" value="B">Option B
+                    </div>
+
+                    <div class="row">
+                        <label id="textarea-label" for="textarea">Any other suggestions:</label>
+                        <textarea id="textarea" name="textarea" rows="5" columns="33"></textarea>
+                    </div>
+
+                    <input id="submit" type="submit" value="submit">
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
+        <!--Testing script-->
+<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
