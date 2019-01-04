@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="styles.css"/>
+        <title>A Gentle Introduction to Haskell</title>            
+    </head>
+    <body>
+        <nav id="navbar">
+            <header><h2>A Gentle Introduction to Haskell</h2></header>
+            <ul>
+                <li><a class="nav-link" href="#Introduction">Introduction</a></li>
+                <li><a class="nav-link" href="#Values,_Types,_and_Other_Goodies">Values, Types, and Other Goodies</a></li>
+                <li><a class="nav-link" href="#Functions">Functions</a></li>
+                <li><a class="nav-link" href="#Case_Expressions_and_Pattern_Matching">Case Expressions and Pattern Matching</a></li>
+                <li><a class="nav-link" href="#Type_Classes_and_Overloading">Type Classes and Overloading</a></li>
+            </ul>
+        </nav>
+        <main id="main-doc">
+            <section id="Introduction" class="main-section">
+                <header><h2>Introduction</h2></header>
+                <p>Our purpose in writing this tutorial is not to teach programming, nor even to teach functional programming. Rather, it is intended to serve as a supplement to the Haskell Report [4], which is otherwise a rather dense technical exposition. Our goal is to provide a gentle introduction to Haskell for someone who has experience with at least one other language, preferably a functional language (even if only an "almost-functional" language such as ML or Scheme). If the reader wishes to learn more about the functional programming style, we highly recommend Bird's text Introduction to Functional Programming [1] or Davie's An Introduction to Functional Programming Systems Using Haskell [2]. For a useful survey of functional programming languages and techniques, including some of the language design principles used in Haskell, see [3].</p>
+                <p>The Haskell language has evolved significantly since its birth in 1987. This tutorial deals with Haskell 98. Older versions of the language are now obsolete; Haskell users are encouraged to use Haskell 98. There are also many extensions to Haskell 98 that have been widely implemented. These are not yet a formal part of the Haskell language and are not covered in this tutorial.</p>
+                <p>Our general strategy for introducing language features is this: motivate the idea, define some terms, give some examples, and then point to the Report for details. We suggest, however, that the reader completely ignore the details until the Gentle Introduction has been completely read. On the other hand, Haskell's Standard Prelude (in Appendix A of the Report and the standard libraries (found in the Library Report [5]) contain lots of useful examples of Haskell code; we encourage a thorough reading once this tutorial is completed. This will not only give the reader a feel for what real Haskell code looks like, but will also familiarize her with Haskell's standard set of predefined functions and types.</p>
+                <p>Finally, the Haskell web site, http://haskell.org, has a wealth of information about the Haskell language and its implementations.</p>
+                <p>[We have also taken the course of not laying out a plethora of lexical syntax rules at the outset. Rather, we introduce them incrementally as our examples demand, and enclose them in brackets, as with this paragraph. This is in stark contrast to the organization of the Report, although the Report remains the authoritative source for details (references such as "report section 2.1" refer to sections in the Report).]</p>
+                <p>Haskell is a typeful programming language: (Coined by Luca Cardelli.) types are pervasive, and the newcomer is best off becoming well aware of the full power and complexity of Haskell's type system from the outset. For those whose only experience is with relatively "untypeful" languages such as Perl, Tcl, or Scheme, this may be a difficult adjustment; for those familiar with Java, C, Modula, or even ML, the adjustment should be easier but still not insignificant, since Haskell's type system is different and somewhat richer than most. In any case, "typeful programming" is part of the Haskell programming experience, and cannot be avoided.</p>
+            <section>
+            <section id="Values,_Types,_and_Other_Goodies" class="main-section">
+                <header><h2>Values, Types, and Other Goodies</h2></header>
+                <p>Because Haskell is a purely functional language, all computations are done via the evaluation of expressions (syntactic terms) to yield values (abstract entities that we regard as answers). Every value has an associated type. (Intuitively, we can think of types as sets of values.) Examples of expressions include atomic values such as the integer 5, the character 'a', and the function \x -> x+1, as well as structured values such as the list [1,2,3] and the pair ('b',4).</p>
+                <p>Just as expressions denote values, type expressions are syntactic terms that denote type values (or just types). Examples of type expressions include the atomic types Integer (infinite-precision integers), Char (characters), Integer->Integer (functions mapping Integer to Integer), as well as the structured types [Integer] (homogeneous lists of integers) and (Char,Integer) (character, integer pairs).</p>
+                <p>All Haskell values are "first-class"---they may be passed as arguments to functions, returned as results, placed in data structures, etc. Haskell types, on the other hand, are not first-class. Types in a sense describe values, and the association of a value with its type is called a typing. Using the examples of values and types above, we write typings as follows: </p>
+                <code> 
+                            5  :: Integer<br/>
+                           'a' :: Charr<br/>
+                           inc :: Integer -> Integerr<br/>
+                       [1,2,3] :: [Integer]r<br/>
+                       ('b',4) :: (Char,Integer)r<br/>
+                </code>
+                <p>The "::" can be read "has type."</p>
+                <p>Functions in Haskell are normally defined by a series of equations. For example, the function inc can be defined by the single equation: </p>
+                <code>inc n          = n+1</code>
+                <p>An equation is an example of a declaration. Another kind of declaration is a type signature declaration (§4.4.1), with which we can declare an explicit typing for inc: </p>
+                <code>inc            :: Integer -> Integer</code>
+                <p>We will have much more to say about function definitions in Section 3.</p>
+                <p>For pedagogical purposes, when we wish to indicate that an expression e1 evaluates, or "reduces," to another expression or value e2, we will write:</p>
+                <code>e1 => e2</code>
+                <p>For example, note that:</p>
+                <code>inc (inc 3) => 5</code>
+                    
+            <section>
+            <section id="Functions" class="main-section">
+                <header><h2>Functions</h2></header>
+                <p>Since Haskell is a functional language, one would expect functions to play a major role, and indeed they do. In this section, we look at several aspects of functions in Haskell.</p>
+
+            <section>
+            <section id="Case_Expressions_and_Pattern_Matching" class="main-section">
+                <header><h2>Case Expressions and Pattern Matching</h2></header>
+                <p>Earlier we gave several examples of pattern matching in defining functions---for example length and fringe. In this section we will look at the pattern-matching process in greater detail (§3.17). (Pattern matching in Haskell is different from that found in logic programming languages such as Prolog; in particular, it can be viewed as "one-way" matching, whereas Prolog allows "two-way" matching (via unification), along with implicit backtracking in its evaluation mechanism.)</p>
+            <section>
+            <section id="Type_Classes_and_Overloading" class="main-section">
+                <header><h2>Type Classes and Overloading</h2></header>
+                <p>There is one final feature of Haskell's type system that sets it apart from other programming languages. The kind of polymorphism that we have talked about so far is commonly called parametric polymorphism. There is another kind called ad hoc polymorphism, better known as overloading. Here are some examples of ad hoc polymorphism:
+                <ul>
+                    <li>The literals 1, 2, etc. are often used to represent both fixed and arbitrary precision integers.</li>
+                    <li>Numeric operators such as + are often defined to work on many different kinds of numbers.</li>
+                    <li>The equality operator (== in Haskell) usually works on numbers and many other (but not all) types.</li>
+                </ul>            
+                </p>
+                <p>
+                    <h3>Comparison to Other Languages.</h3>
+                    The classes used by Haskell are similar to those used in other object-oriented languages such as C++ and Java. However, there are some significant differences:
+                    <li>Haskell separates the definition of a type from the definition of the methods associated with that type. A class in C++ or Java usually defines both a data structure (the member variables) and the functions associated with the structure (the methods). In Haskell, these definitions are separated.
+                    <li>The class methods defined by a Haskell class correspond to virtual functions in a C++ class. Each instance of a class provides its own definition for each method; class defaults correspond to default definitions for a virtual function in the base class.</li>
+                    <li>Haskell classes are roughly similar to a Java interface. Like an interface declaration, a Haskell class declaration defines a protocol for using an object rather than defining an object itself.</li>
+                    <li>Haskell does not support the C++ overloading style in which functions with different types share a common name.</li>
+                    <li>The type of a Haskell object cannot be implicitly coerced; there is no universal base class such as Object which values can be projected into or out of.</li>
+                    <li>C++ and Java attach identifying information (such as a VTable) to the runtime representation of an object. In Haskell, such information is attached logically instead of physically to values, through the type system.</li>
+                    <li>There is no access control (such as public or private class constituents) built into the Haskell class system. Instead, the module system must be used to hide or reveal components of a class.</li>
+            <section>
+          </main>
+    </body>
+</html>
+<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
