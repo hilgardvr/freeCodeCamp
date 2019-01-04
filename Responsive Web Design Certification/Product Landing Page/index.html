@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+        .nav-link {
+            background-color: light-blue;
+            text-transform: uppercase;
+            padding: 10px;
+            background-color: light-gray;
+        }
+        li {
+            list-style: none;
+        }
+        * {
+            background-color: lightblue;
+        }
+        #header {
+            position: fixed;
+            z-index: 7;
+            top: 0px;
+            left: 0px;
+            min-height: 100px;
+            max-width: 900px;
+            margin: auto;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+        @media all screen (max-width: 900px) {
+            #header {
+                flex-wrap: wrap;
+            }
+        }
+        #content {
+            position: absolute;
+            top: 150px;
+            left: 0px;
+            max-width: 900px;
+            margin: auto;
+        }
+        li {
+            display: inline;
+        }
+
+    </style>
+  </head>
+  <body>
+    <header id="header">
+      <img id="header-img" height="50" src="https://i.pinimg.com/originals/cc/3d/a4/cc3da4917e86af16333c3ba413e8e93f.png"  alt="ukulele logo"/><!--https://logopond.com/logos/17ecb4514a6322f0342707e5a7c85710.png-->
+      <nav id="nav-bar">
+        <ul>
+          <li><a class="nav-link" href="#starter-ukes">Starter Ukes</a></li>
+          <li><a class="nav-link" href="#mid-uier-ukes">Mid Tier Ukes</a></li>
+          <li><a class="nav-link" href="#premium-ukes">Premium Ukes</a></li>
+      </nav>
+    </header>
+      <content id="content">
+        <form id="form" action="https://www.freecodecamp.com/email-submit">
+          <label for="email">Receive specials and news:</label>
+          <input type="email" id="email" placeholder="Email" name="email">
+          <input id="submit" type="submit" value="Submit"><br/><br/>
+        </form>
+        <iframe id="video" width="560" height="315" src="https://www.youtube.com/embed/wh4NbQzMIM8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div id="starter-ukes">
+          <h2>Starter Ukes</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <div id="mid-uier-ukes">
+          <h2>Mid Tier Ukes</h2> 
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <div id="premium-ukes">
+          <h2>Premium Ukes</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+      </content>
+  </body>
+</html>
+<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
